@@ -4,6 +4,9 @@ import 'package:flutter_socket_io/providers/home.dart';
 import 'package:intl/intl.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:provider/provider.dart';
+import 'package:mongo_dart/mongo_dart.dart' as M;
+import 'package:mongodb_flutter/database/database.dart';
+import 'package:mongodb_flutter/models/message.dart';
 
 class HomeScreen extends StatefulWidget {
   final String username;
@@ -128,6 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     onPressed: () {
                       if (_messageInputController.text.trim().isNotEmpty) {
                         _sendMessage();
+                        insertMessage();
                       }
                     },
                     icon: const Icon(Icons.send),
@@ -139,5 +143,14 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
     );
+  }
+
+  insertMessage() async {
+    final message = Message(
+      id: M.ObjectId(),
+      name: _messageInputController.text,
+    );
+    await MongoDatabase.insert(message);
+    Navigator.pop(context);
   }
 }
