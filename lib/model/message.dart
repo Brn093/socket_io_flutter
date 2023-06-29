@@ -7,7 +7,7 @@ class Message {
   final DateTime? sentAt;
 
   Message({
-    required this.íd,
+    required this.id,
     required this.message,
     this.senderUsername,
     this.sentAt,

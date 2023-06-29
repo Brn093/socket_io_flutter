@@ -148,7 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
   insertMessage() async {
     final message = Message(
       id: M.ObjectId(),
-      name: _messageInputController.text,
+      message: _messageInputController.text,
     );
     await MongoDatabase.insert(message);
     Navigator.pop(context);
