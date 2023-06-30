@@ -5,8 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:provider/provider.dart';
 import 'package:mongo_dart/mongo_dart.dart' as M;
-import 'package:mongodb_flutter/database/database.dart';
-import 'package:mongodb_flutter/models/message.dart';
+import 'package:flutter_socket_io/database/database.dart';
 
 class HomeScreen extends StatefulWidget {
   final String username;
@@ -89,9 +88,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ? CrossAxisAlignment.end
                                     : CrossAxisAlignment.start,
                             children: [
-                              Text(message.message),
+                              Text(message.message!),
                               Text(
-                                DateFormat('hh:mm a').format(message.sentAt),
+                                DateFormat('yyyy-MM-dd hh:mm').format(message.sentAt!),
                                 style: Theme.of(context).textTheme.caption,
                               ),
                             ],

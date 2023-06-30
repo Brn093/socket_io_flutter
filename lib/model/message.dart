@@ -1,14 +1,14 @@
 import 'package:mongo_dart/mongo_dart.dart';
 
 class Message {
-  final ObjectId id;
-  final String message;
+  final ObjectId? id;
+  final String? message;
   final String? senderUsername;
   final DateTime? sentAt;
 
   Message({
-    required this.id,
-    required this.message,
+    this.id,
+    this.message,
     this.senderUsername,
     this.sentAt,
   });
